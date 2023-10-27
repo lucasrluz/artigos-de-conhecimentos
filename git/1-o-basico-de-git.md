@@ -5,7 +5,7 @@ Git é um versionador de código, gratuito e de código aberto. Um versionador d
 
 ## Configuração básica
 
-Depois de intalar o Git é importante fazer ulgumas configurações básicas. Primeiro vamos definir o email e username, isso serve para identificar quem faz alguma alteração no código.
+Depois de instalar o Git é importante fazer algumas configurações básicas. Primeiro vamos definir o email e username, isso serve para identificar quem faz alguma alteração no código.
 
 ```
 $ git config --global user.email "<seu-email>"
