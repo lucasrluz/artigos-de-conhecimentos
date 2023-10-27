@@ -54,3 +54,17 @@ nothing to commit (create/copy files and use "git add" to track)
 ```
 
 ## Primeiro commit
+Depois de inicializar um novo repositório Git no diretório de sua escolha, vamos começar adicionando um novo arquivo com o nome de `a.txt` e dentro vou colocar o seguinte conteúdo:
+
+```
+Conteúdo do arquivo a.txt
+```
+
+Agora se executarmos o seguinte comando `$ git status` vamos ver algumas informações que na execução anterior do mesmo comando, não tinha. Além das informações anteriores, temos:
+
+```
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	a.txt
+```
+Aqui o Git está informando que exite um ou mais arquivos que não estão sendo rastreados, ou seja, caso fizermos alterações nesse arquivo não vamos conseguir ter um histórico do que foi alterado ou adicionado.
