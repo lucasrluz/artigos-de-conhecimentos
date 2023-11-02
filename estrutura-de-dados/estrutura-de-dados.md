@@ -1,155 +1,133 @@
 # Estrutura de Dados
 
 ## O que é Estrutura de Dados
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et felis magna. Duis fermentum dolor bibendum, vestibulum nulla et, tristique nisi. In lacinia lobortis fermentum. Ut augue nunc, vulputate vel volutpat et, lobortis aliquet turpis. Phasellus varius nisi vel justo porttitor tincidunt. Donec consequat nisl ac dui pharetra, eu suscipit sapien rhoncus. Maecenas tincidunt tellus metus, eget semper libero lobortis eu. Donec dapibus bibendum est non vehicula.
+
 ## Para que serve uma Estrutura de Dados
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et felis magna. Duis fermentum dolor bibendum, vestibulum nulla et, tristique nisi. In lacinia lobortis fermentum. Ut augue nunc, vulputate vel volutpat et, lobortis aliquet turpis. Phasellus varius nisi vel justo porttitor tincidunt. Donec consequat nisl ac dui pharetra, eu suscipit sapien rhoncus. Maecenas tincidunt tellus metus, eget semper libero lobortis eu. Donec dapibus bibendum est non vehicula.
+
 ## Linked List
-### Introdução
+### Os tipos de Linked List 
 
-Linked List em português significa "Lista Ligada", basicamente esta Estrutura de Dados é uma lista onde cada elemento aponta para o próximo elemento.
+Basicamente exitem 4 tipos de linked list.
+* Singly Linked List
+* Circular Singly Linked List
+* Doubly Linked List
+* Circular Linked List
 
-Cada elemento de uma Linked List pode ser chamado de `node`, cada `node` possuí dois atributos, um deles é o valor que queremos armazenar na lista e o outro atributo é o próximo `node`.
+#### Singly Linked List
 
-Aqui está um exemplo de uma Linked List ou mais especificamente um Singly Linked List, com números de 0 a 4. Note que temos os `nodes`, cada um tem os valores armazenados e o campo `next` que aponta para o próximo `node`.
+Linked list em português significa "Lista Ligada", basicamente esta Estrutura de Dados é uma lista onde cada elemento aponta para o próximo elemento.
 
-```mermaid
-flowchart LR
-    subgraph node0 [node 0]
-        element0[0]
-        next0[next]
-    end
+Cada elemento de uma linked list pode ser chamado de `node`, cada `node` possuí dois atributos, um deles é o valor que queremos armazenar na lista e o outro atributo é a referência ao próximo `node` da lista.
 
-    subgraph node1 [node 1]
-        element1[1]
-        next1[next]
-    end
-    
+Aqui está um exemplo de uma linked list ou mais especificamente uma singly linked list, com letras de A a E (poderia ser uma lista de compras, uma lista de livros, etc. Foi colocado letras para facilitar o exemplo). Note que temos os `nodes`, cada um tem os valores armazenados e um campo `next` que aponta para o próximo `node`. Além disso temos também um valor chamado `HEAD` que aponta para o primeiro `node` da lista. Nesse tipo de linked list o último `node` aponta para `null` pois não tem nunhum outro valor após ele.
 
-    subgraph node2 [node 2]
-        element2[2]
-        next2[next]
-    end
+![Singly Linked List](./singly-linked-list.svg "Singly Linked List")
 
+#### Circular Singly Linked List
+Este tipo de linked list é basicamente uma singly linked list só que com uma diferença, o último `node` em vez de apontar para `null`, ele aponta para o primeiro elemento da lista (por isso o nome "circular").
 
-    subgraph node3 [node 3]
-        element3[3]
-        next3[next]
-    end
+![Circular Linked List](./circular-singly-linked-list.svg "Circular Linked List")
 
-    subgraph node4 [node 4]
-        element4[4]
-        next4[next]
-    end
-
-    null
-
-    next0 --> node1 
-    next1 --> node2
-    next2 --> node3
-    next3 --> node4
-    next4 --> null
-```
-
-### Outros tipos de Linked List
 #### Doubly Linked List
-Nesse tipo de Linked List além de termos um `node` apontando para o próximo, temos um campo que aponta para o `node` anterior.
 
+Nesse tipo de linked list além de termos um campo `next` que aponta para o próximo `node`, também temos um campo `prev` que aponta para o `node` anterior. Além disso temos também o `HEAD` que aponta para o primeiro `node` da lista. O último `node` aponta para `null` como próximo elemento e o primeiro elemento aponta para `null` como elemento anterior
 
-```mermaid
-flowchart TB
-    subgraph node0 [node 0]
-        direction TB
-        element0[0]
-        prev0[prev]
-        next0[next]
-    end
+![Doubly Linked List](./doubly-linked-list.svg "Doubly Linked List")
 
-    subgraph node1 [node 1]
-        direction TB
-        element1[1]
-        prev1[prev]
-        next1[next]
-    end
+#### Circular Doubly Linked List
+Aqui o funcionamento é como a circular singly linked list mas como estamos falando de um circular doubly linked list vai ter o campo `prev`. O primeiro elemento aponta para o último elemento da list no campo `prev`. O último elemento da lista aponta para o primeiro elemento de lista no campo `next`.
 
-
-    subgraph node2 [node 2]
-        direction TB
-        element2[2]
-        prev2[prev]
-        next2[next]
-    end
-
-
-    subgraph node3 [node 3]
-        direction TB
-        element3[3]
-        prev3[prev]
-        next3[next]
-    end
-
-    subgraph node4 [node 4]
-        direction TB
-        element4[4]
-        prev4[prev]
-        next4[next]
-    end
-
-    null1[null]
-    null2[null]
-
-    next0 --> node1
-    next1 --> node2
-    next2 --> node3
-    next3 --> node4
-    next4 --> null1
-
-    prev4 --> node3
-    prev3 --> node2
-    prev2 --> node1
-    prev1 --> node0
-    prev0 --> null2
-```
-
-#### Circular Linked List
+![Circular Doubly Linked List](./circular-doubly-linked-list.svg "Circular Doubly Linked List")
 
 ### Implementação 
-Uma Linked List começa tendo uma referência ao primeiro elemento da lista que chamamos de `HEAD`, depois disso cada elemento vai ter uma referência ao próximo elemento e assim por diante até o final da lista, o último elemento pode apontar para `null`.
-
-Vamos começar criando uma classe chamada `Node` que contém um atributo `element` que irá receber o elemento da lista e um atributo chamado `next` que será nossa referência ao próximo elemento.
+Vamos começar criando uma classe chamada `Node` que contém um atributo `data` que irá receber o valor que queremos armazenar na lista e um atributo chamado `next` que será nossa referência ao próximo `node`.
 
 ``` javascript
 class Node {
     next = null
-    element = null
+    data = null
 
-    constructor(element) {
-        this.element = element
+    constructor(data) {
+        this.data = data 
     }
 }
 
 ```
-Agora vamos criar uma classe chamada `LinkedList` com um atributo `head` que irá apontar para o primeiro elemento da lista e uma função chamada `add` que irá adicionar os elemento na lista.
+Agora vamos criar uma classe chamada `SinglyLinkedList` com um atributo `head` que irá apontar para o primeiro elemento da lista e uma função chamada `add` que irá adicionar os elemento na lista.
 
 ``` javascript
 ...
 
-class LinkedList {
+class SinglyLinkedList {
     head = null
 
-    add(element) {
+    add(data) {
+        /*
+            Verifica se a lista está vazia,
+            se sim adiciona o primeiro elemento na lista.
+        */
         if (this.head === null) {
-            const node = new Node(element)  
+            const node = new Node(data)  
             this.head = head
 
             return
         } 
 
+        /*
+            Caso já tenha um ou mais elementos na lista, entra nesse while e
+            percorre toda a lista até encontrar o último elemento para poder
+            adicionar mais um elemento depois dele.
+        */
         let current = this.head
 
         while(true) {
             if (current.next === null) {
-                const node = new Node(element)
+                const node = new Node(data)
 
                 current.next = node
+
+                break
+            }
+
+            current = current.next
+        }
+    }
+
+    remove(data) {
+        /*
+            Caso seja o primeiro elemento da lista para ser removido.
+        */
+        if (this.head.data === data) {
+            this.head = this.head.next
+
+            return
+        }
+
+        /*
+            Caso seja algum elemento no meio ou
+            no final da lista para ser removido.
+        */
+        let current = this.head
+
+        while(true) {
+            /*
+                Caso chegue no final da lista e 
+                não encontre o elemento para remover.
+            */
+
+            if (current.next === null) {
+                break
+            }
+            
+            /*
+                Caso encontre o elemento, faz a 
+                substituição da referência para o elemento após ele.
+            */
+            if (current.next.data === data) {
+                current.next = current.next.next
 
                 break
             }
